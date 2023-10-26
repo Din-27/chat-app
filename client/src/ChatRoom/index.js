@@ -26,10 +26,10 @@ const ChatRoom = (props) => {
           {messages.map((message, i) => (
             <li
               key={i}
-              className={`message-item ${message.ownedByCurrentUser ? "my-message" : "received-message"
-                }`}
+              className={`message-item ${message.ownedByCurrentUser ? "my-message-position" : "received-message-position"}`}
             >
-              {message.body}
+              <label>{message.identity}</label>
+              <p className={message.ownedByCurrentUser ? "my-message" : "received-message"}>{message.body}</p>
             </li>
           ))}
         </ol>

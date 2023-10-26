@@ -36,21 +36,38 @@
 
 .message-item {
     width: 55%;
-    margin: 8px;
+    /* margin: 8px; */
     padding: 12px 8px;
     word-break: break-word;
     border-radius: 4px;
-    color: white;
 }
 
-.my-message {
-    background-color: rgb(0, 132, 255);
+.my-message-position {
     margin-left: auto;
 }
 
-.received-message {
-    background-color: #3f4042;
+.my-message {
+    color: white;
+    background-color: rgb(0, 132, 255);
+    /* width: 55%; */
+    /* margin: 8px; */
+    padding: 12px 8px;
+    word-break: break-word;
+    border-radius: 4px;
+}
+
+.received-message-position {
     margin-right: auto;
+}
+
+.received-message {
+    color: white;
+    background-color: #3f4042;
+    /* width: 55%; */
+    /* margin: 8px; */
+    padding: 12px 8px;
+    word-break: break-word;
+    border-radius: 4px;
 }
 
 .send-message-button {
@@ -62,6 +79,8 @@
     border: none;
 }
 
-.messages-container, .new-message-input-field, .send-message-button {
+.messages-container,
+.new-message-input-field,
+.send-message-button {
     border-color: #9a9a9a;
 }
