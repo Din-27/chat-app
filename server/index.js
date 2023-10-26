@@ -19,7 +19,7 @@ io.on("connection", (socket) => {
   API.get('/client_aktif')
     .then(({ data }) => {
       if (data.filter(x => x.identity === identity).length === 0)
-        API.post('/client_aktif', { identity: identity }).then()
+        API.post('/client_aktif', { identity: identity, room_id: roomId }).then()
     })
   // Join a conversation
   socket.join(roomId);
@@ -37,9 +37,10 @@ io.on("connection", (socket) => {
   socket.on(NEW_CHAT_MESSAGE_EVENT, async (data) => {
     API.get('/client_aktif')
       .then((res) => {
+        const checkBot = res.data.filter(x => x.identity === 'chatbot')
         // console.log(res.data.filter(x => x.identity === 'chatbot'),
         //   !identity.includes('chatbot') && res.data.filter(x => x.identity === 'chatbot').length > 0);
-        if (!identity.includes('chatbot') && res.data.filter(x => x.identity === 'chatbot').length > 0) {
+        if (!identity.includes('chatbot') && checkBot.length > 0 && checkBot[0].room_id === roomId) {
           if (data.body.match(/[o|O][R|r][d|D][e|E][r|R]/gm)) {
             setTimeout(() => {
               API.post('/pesan', { identity: 'chatbot', body: 'pesan apa kak?' })
