@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Socket.io Client</title>
+</head>
+
+<body>
+    <div id="bg" style="padding: 15px;">
+        <div id="data"></div>
+        <div id="status"></div>
+        <div id="sts"></div>
+        <div id="data-container"></div>
+        <img id="image" src="" alt="">
+        <!-- <button onclick="Button()">set cookie</button>
+        <button onclick="View()">get cookie</button> -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        const dataDisplay1 = document.getElementById("image");
+        // const dataDisplay2 = document.getElementById('status');
+        // const dataDisplay3 = document.getElementById('sts');
+
+        // const bg = document.getElementById('bg');
+
+        const socket = io('http://localhost:3000');
+
+        socket.on('qr_code', (data) => {
+            console.log(data);
+            dataDisplay1.setAttribute("src", data);
+            // QRCode.toCanvas(canvas, data, function (error) {
+            //     if (error) console.error(error)
+            //     console.log('success!');
+            // })
+            // dataDisplay1.textContent = `NO order: ${data}`;
+            // dataDisplay2.textContent = `Status: ${newData.status}`;
+            // dataDisplay3.textContent = `Sts: ${newData.sts}`;
+            // bg.style.backgroundColor = newData.color;
+        });
+
+        socket.on('disconnect', () => {
+            console.log('Disconnected from Socket.io');
+        });
+        // const Button = () => {
+        //     fetch('http://localhost:8080/set-cookie') // Ganti URL sesuai dengan endpoint data Anda
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             // Menampilkan data di halaman HTML
+        //             const dataContainer = document.getElementById('data-container');
+        //             dataContainer.innerHTML = `<p>Data: ${data.message}</p>`;
+        //         })
+        //         .catch(error => {
+        //             console.error('Error:', error);
+        //         });
+        // }
+
+        // const View = () => {
+        //     fetch('http://localhost:8080/get-cookie') // Ganti URL sesuai dengan endpoint data Anda
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             // Menampilkan data di halaman HTML
+        //             const dataContainer = document.getElementById('data-container');
+        //             dataContainer.innerHTML = `<p>Data: ${data.message}</p>`;
+        //         })
+        //         .catch(error => {
+        //             console.error('Error:', error);
+        //         });
+        // }
+    </script>
+</body>
+
+</html>

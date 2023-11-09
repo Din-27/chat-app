@@ -13,7 +13,7 @@ const API = axios.create({
   baseURL: 'http://localhost:3004/'
 })
 
-io.on("connection", (socket) => {
+const start = (socket) => {
   const { roomId, identity } = socket.handshake.query;
   console.log(`Client ${identity} connected`);
   API.get('/client_aktif')
@@ -58,7 +58,9 @@ io.on("connection", (socket) => {
           .catch((e) => console.log(e))
       });
   })
-});
+}
+
+io.on("connection", (socket) => start(socket));
 
 server.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
