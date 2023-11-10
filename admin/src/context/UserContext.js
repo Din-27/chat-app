@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
@@ -39,6 +39,11 @@ const UserProvider = ({ children }) => {
             [e.target.name]: e.target.value
         })
     }
+
+    useEffect(() => {
+        CheckToken()
+    }, [])
+
 
     return (
         <UserContext.Provider

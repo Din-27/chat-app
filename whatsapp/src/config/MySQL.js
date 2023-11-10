@@ -1,5 +1,4 @@
-import { createPool } from "mysql";
-
+const mysql = require('mysql')
 // const process = require("../../../connections/componentAddress");
 
 var db_config = {
@@ -16,7 +15,7 @@ var db_config = {
 };
 
 function handleDisconnect() {
-    connection = createPool(db_config);
+    connection = mysql.createPool(db_config);
     connection.getConnection(function (err, connection) {
         if (err) {
             connection.release();
@@ -29,7 +28,7 @@ function handleDisconnect() {
     return connection;
 }
 
-export function queryDB(query, queryvalue) {
+function queryDB(query, queryvalue) {
     return new Promise(function (resolve, reject) {
         setTimeout(function () {
             handleDisconnect.query(query, queryvalue, async function (error, rows, fields) {
@@ -47,5 +46,7 @@ export function queryDB(query, queryvalue) {
         }, 0);
     });
 }
+
+module.exports = { queryDB }
 
 handleDisconnect();

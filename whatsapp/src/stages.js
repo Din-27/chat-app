@@ -1,4 +1,4 @@
-import { queryDB } from '../config/MySQL.config.js';
+import { queryDB } from './config/MySQL.js';
 import {
   initialStage,
   stageOne,

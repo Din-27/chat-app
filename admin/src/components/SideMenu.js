@@ -2,12 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../context/UserContext';
 
 export default function SideMenu({ children }) {
-    const { CheckToken } = useContext(UserContext);
-
-    useEffect(() => {
-        CheckToken()
-    }, [])
-
+    
     return (
         <>
             <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
