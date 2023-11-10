@@ -36,10 +36,7 @@ io.on('connection', (socket) => {
     client.on('ready', () => {
         console.log('Bot siap digunakan!');
     });
-    client.on('group_update', (contacts) => {
-        console.log('group_update', contacts);
-        // Handle contact list updates here
-    });
+
     client.on('message', async (message) => {
         try {
 
